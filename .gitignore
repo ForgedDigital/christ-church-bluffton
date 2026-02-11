@@ -12,3 +12,14 @@ Thumbs.db
 *.tmp
 *.bak
 *-previous.*
+
+# Sensitive / private files
+*.xlsx
+*.pdf
+Account PWs*
+CCB Articles*
+CCB EIN*
+
+# Non-source assets in root
+*.jpg
+ANGLICAN-CHURCH-INFO.txt
