@@ -91,7 +91,7 @@
 
 :root {
     /* Primary Colors */
-    --navy-blue: #00244C;
+    --navy-blue: #1B4332;
     --gold: #DCA83D;
 
     /* Neutral Colors */
@@ -809,7 +809,7 @@ ul {
    Page Header (Interior Pages)
    ======================================== */
 .page-header {
-    background: linear-gradient(135deg, var(--navy-blue) 0%, #001a36 100%);
+    background: linear-gradient(135deg, var(--navy-blue) 0%, #0F2B1E 100%);
     padding: 80px 24px 60px;
     text-align: center;
     position: relative;
@@ -866,7 +866,7 @@ ul {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, var(--navy-blue) 0%, #001a36 50%, #000d1a 100%);
+    background: linear-gradient(135deg, var(--navy-blue) 0%, #0F2B1E 50%, #081A10 100%);
 }
 
 .hero-pattern {
@@ -1198,7 +1198,7 @@ ul {
 .visual-image {
     border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 20px 60px rgba(0, 36, 76, 0.2);
+    box-shadow: 0 20px 60px rgba(27, 67, 50, 0.2);
 }
 
 .visual-image img {
@@ -1249,14 +1249,14 @@ ul {
     padding: 40px;
     border-radius: 16px;
     text-align: center;
-    box-shadow: 0 4px 20px rgba(0, 36, 76, 0.12);
+    box-shadow: 0 4px 20px rgba(27, 67, 50, 0.12);
     border: 1px solid var(--light-gray);
     transition: var(--transition);
 }
 
 .vision-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 20px 60px rgba(0, 36, 76, 0.2);
+    box-shadow: 0 20px 60px rgba(27, 67, 50, 0.2);
     border-color: var(--gold);
 }
 
@@ -1289,7 +1289,7 @@ ul {
    Stats Section
    ======================================== */
 .stats-section {
-    background: linear-gradient(135deg, var(--navy-blue) 0%, #001a36 100%);
+    background: linear-gradient(135deg, var(--navy-blue) 0%, #0F2B1E 100%);
     padding: 100px 0;
     position: relative;
 }
@@ -1385,14 +1385,14 @@ ul {
     background: var(--white);
     padding: 35px;
     border-radius: 16px;
-    box-shadow: 0 2px 8px rgba(0, 36, 76, 0.08);
+    box-shadow: 0 2px 8px rgba(27, 67, 50, 0.08);
     transition: var(--transition);
     border: 1px solid transparent;
 }
 
 .belief-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 40px rgba(0, 36, 76, 0.15);
+    box-shadow: 0 10px 40px rgba(27, 67, 50, 0.15);
     border-color: var(--gold);
 }
 
@@ -1420,7 +1420,7 @@ ul {
 }
 
 .scripture-banner {
-    background: linear-gradient(135deg, var(--navy-blue) 0%, #001a36 100%);
+    background: linear-gradient(135deg, var(--navy-blue) 0%, #0F2B1E 100%);
     padding: 60px;
     border-radius: 24px;
     text-align: center;
@@ -1653,7 +1653,7 @@ ul {
     padding: 25px 30px;
     background: var(--white);
     border-radius: 16px;
-    box-shadow: 0 4px 20px rgba(0, 36, 76, 0.12);
+    box-shadow: 0 4px 20px rgba(27, 67, 50, 0.12);
     border-left: 4px solid var(--gold);
 }
 
@@ -1702,12 +1702,12 @@ ul {
     padding: 25px;
     background: var(--white);
     border-radius: 16px;
-    box-shadow: 0 2px 8px rgba(0, 36, 76, 0.08);
+    box-shadow: 0 2px 8px rgba(27, 67, 50, 0.08);
     transition: var(--transition);
 }
 
 .contact-card:hover {
-    box-shadow: 0 4px 20px rgba(0, 36, 76, 0.12);
+    box-shadow: 0 4px 20px rgba(27, 67, 50, 0.12);
 }
 
 .contact-card .card-icon {
@@ -1760,7 +1760,7 @@ ul {
     background: var(--white);
     padding: 40px;
     border-radius: 24px;
-    box-shadow: 0 10px 40px rgba(0, 36, 76, 0.15);
+    box-shadow: 0 10px 40px rgba(27, 67, 50, 0.15);
 }
 
 .form-card h3 {
@@ -1916,13 +1916,13 @@ ul {
 .donation-box {
     background: var(--white);
     border-radius: 20px;
-    box-shadow: 0 15px 50px rgba(0, 36, 76, 0.15);
+    box-shadow: 0 15px 50px rgba(27, 67, 50, 0.15);
     overflow: hidden;
-    border: 1px solid rgba(0, 36, 76, 0.08);
+    border: 1px solid rgba(27, 67, 50, 0.08);
 }
 
 .donation-header {
-    background: linear-gradient(135deg, var(--navy-blue) 0%, #001a36 100%);
+    background: linear-gradient(135deg, var(--navy-blue) 0%, #0F2B1E 100%);
     padding: 35px 30px;
     text-align: center;
     color: var(--white);
@@ -2023,7 +2023,7 @@ ul {
     gap: 0;
     background: var(--white);
     border-radius: 16px;
-    box-shadow: 0 4px 20px rgba(0, 36, 76, 0.12);
+    box-shadow: 0 4px 20px rgba(27, 67, 50, 0.12);
     overflow: hidden;
     transition: var(--transition);
     border: 1px solid var(--light-gray);
@@ -2031,7 +2031,7 @@ ul {
 
 .event-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 20px 60px rgba(0, 36, 76, 0.2);
+    box-shadow: 0 20px 60px rgba(27, 67, 50, 0.2);
     border-color: var(--gold);
 }
 
@@ -2146,7 +2146,7 @@ ul {
    Donate Banner Section
    ======================================== */
 .donate {
-    background: linear-gradient(135deg, var(--navy-blue) 0%, #001a36 100%);
+    background: linear-gradient(135deg, var(--navy-blue) 0%, #0F2B1E 100%);
     position: relative;
     overflow: hidden;
 }
