@@ -4,9 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Worship | Christ Church Bluffton</title>
+    <meta name="description" content="Experience the beauty of Anglican liturgy at Christ Church Bluffton. Worship rooted in the Book of Common Prayer, Scripture, and sacred music.">
+    <meta property="og:title" content="Worship | Christ Church Bluffton">
+    <meta property="og:description" content="Anglican worship rooted in the Book of Common Prayer at Christ Church Bluffton.">
+    <meta property="og:type" content="website">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Lato:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -14,8 +19,16 @@
     <header class="header">
         <div class="header-container">
             <a href="index.html" class="header-left">
-                <div class="logo-box"><span class="logo-placeholder">LOGO</span></div>
-                <span class="church-name">Christ Church Bluffton</span>
+                <div class="logo-box">
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="50" cy="38" r="16" fill="none" stroke="#1B4332" stroke-width="3"/>
+                        <rect x="46" y="8" width="8" height="84" rx="2" fill="#1B4332"/>
+                        <rect x="24" y="30" width="52" height="8" rx="2" fill="#1B4332"/>
+                        <circle cx="50" cy="38" r="12" fill="none" stroke="#1B4332" stroke-width="2" opacity="0.4"/>
+                    </svg>
+                    <span class="logo-example">example</span>
+                </div>
+                <span class="church-name">Christ Church<span class="church-location">&#9753; Bluffton &#10087;</span></span>
             </a>
             <nav class="nav-desktop">
                 <ul class="nav-links">
@@ -40,6 +53,15 @@
     <div class="mobile-overlay" id="mobileOverlay"></div>
     <nav class="mobile-menu" id="mobileMenu">
         <button class="mobile-close" id="mobileClose" aria-label="Close menu">&times;</button>
+        <div class="mobile-menu-branding">
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="50" cy="38" r="16" fill="none" stroke="#1B4332" stroke-width="3"/>
+                <rect x="46" y="8" width="8" height="84" rx="2" fill="#1B4332"/>
+                <rect x="24" y="30" width="52" height="8" rx="2" fill="#1B4332"/>
+                <circle cx="50" cy="38" r="12" fill="none" stroke="#1B4332" stroke-width="2" opacity="0.4"/>
+            </svg>
+            <span class="church-name">Christ Church<span class="church-location">&#9753; Bluffton &#10087;</span></span>
+        </div>
         <ul class="mobile-nav-links">
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About</a></li>
@@ -218,10 +240,19 @@
             <div class="footer-main">
                 <div class="footer-branding">
                     <div class="footer-logo-row">
-                        <div class="footer-logo-box"><span>LOGO<br>HOLDER</span></div>
-                        <span class="footer-church-name">Christ Church Bluffton</span>
+                        <svg class="footer-logo-cross" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="50" cy="38" r="16" fill="none" stroke="#1B4332" stroke-width="3"/>
+                            <rect x="46" y="8" width="8" height="84" rx="2" fill="#1B4332"/>
+                            <rect x="24" y="30" width="52" height="8" rx="2" fill="#1B4332"/>
+                            <circle cx="50" cy="38" r="12" fill="none" stroke="#1B4332" stroke-width="2" opacity="0.4"/>
+                        </svg>
+                        <span class="footer-church-name">Christ Church<span class="footer-church-location">&#9753; Bluffton &#10087;</span></span>
                     </div>
                     <p class="footer-tagline">A Christ-centered Anglican community coming to Bluffton in 2026.</p>
+                    <div class="footer-contact-info">
+                        <a href="tel:+18435555555"><i class="fa fa-phone"></i> (843) 555-5555</a>
+                        <a href="mailto:info@christchurchbluffton.org"><i class="fa fa-envelope"></i> info@christchurchbluffton.org</a>
+                    </div>
                 </div>
                 <div class="footer-column">
                     <h4>Quick Links</h4>
@@ -244,7 +275,8 @@
                 <div class="footer-column footer-newsletter">
                     <h4>Newsletter</h4>
                     <p>Stay updated on our journey</p>
-                    <form class="newsletter-form" action="#" method="POST">
+                    <form class="newsletter-form" name="newsletter" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+                        <input type="hidden" name="bot-field">
                         <input type="email" name="email" placeholder="Your email" required>
                         <button type="submit" class="btn-subscribe">Subscribe</button>
                     </form>
@@ -261,6 +293,39 @@
             </div>
         </div>
     </footer>
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg>
+    </button>
+
+    <!-- Prayer Request FAB (Mobile) -->
+    <div class="prayer-overlay" id="prayerOverlay"></div>
+    <button class="prayer-fab" id="prayerFab" aria-label="Prayer Request">Prayer Request</button>
+    <div class="prayer-popup" id="prayerPopup">
+        <div class="prayer-popup-header">
+            <h4>Prayer Request</h4>
+            <button class="prayer-popup-close" id="prayerClose" aria-label="Close">&times;</button>
+        </div>
+        <div id="prayerFormBody">
+            <form class="prayer-popup-body" id="prayerForm">
+                <div class="form-group">
+                    <label for="prayerName">Name <span class="optional">(optional)</span></label>
+                    <input type="text" id="prayerName" name="name" placeholder="Your name">
+                </div>
+                <div class="form-group">
+                    <label for="prayerText">Your Prayer <span class="required">*</span></label>
+                    <textarea id="prayerText" name="prayer" placeholder="Share your prayer request..." required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit Prayer</button>
+            </form>
+        </div>
+        <div class="prayer-success" id="prayerSuccess">
+            <span class="prayer-success-icon">&#128591;</span>
+            <h4>Prayer Received</h4>
+            <p>Thank you for sharing your prayer. Our community will be lifting you up.</p>
+        </div>
+    </div>
+
     <script src="js/script.js"></script>
 </body>
 </html>

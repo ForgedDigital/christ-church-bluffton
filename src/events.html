@@ -4,9 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Events | Christ Church Bluffton</title>
+    <meta name="description" content="Stay connected with upcoming events at Christ Church Bluffton including worship services, community gatherings, and special celebrations.">
+    <meta property="og:title" content="Events | Christ Church Bluffton">
+    <meta property="og:description" content="Upcoming events and gatherings at Christ Church Bluffton.">
+    <meta property="og:type" content="website">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Lato:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -15,9 +20,15 @@
         <div class="header-container">
             <a href="index.html" class="header-left">
                 <div class="logo-box">
-                    <span class="logo-placeholder">LOGO</span>
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="50" cy="38" r="16" fill="none" stroke="#1B4332" stroke-width="3"/>
+                        <rect x="46" y="8" width="8" height="84" rx="2" fill="#1B4332"/>
+                        <rect x="24" y="30" width="52" height="8" rx="2" fill="#1B4332"/>
+                        <circle cx="50" cy="38" r="12" fill="none" stroke="#1B4332" stroke-width="2" opacity="0.4"/>
+                    </svg>
+                    <span class="logo-example">example</span>
                 </div>
-                <span class="church-name">Christ Church Bluffton</span>
+                <span class="church-name">Christ Church<span class="church-location">&#9753; Bluffton &#10087;</span></span>
             </a>
 
             <nav class="nav-desktop">
@@ -48,6 +59,15 @@
     <!-- Mobile Menu -->
     <nav class="mobile-menu" id="mobileMenu">
         <button class="mobile-close" id="mobileClose" aria-label="Close menu">&times;</button>
+        <div class="mobile-menu-branding">
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="50" cy="38" r="16" fill="none" stroke="#1B4332" stroke-width="3"/>
+                <rect x="46" y="8" width="8" height="84" rx="2" fill="#1B4332"/>
+                <rect x="24" y="30" width="52" height="8" rx="2" fill="#1B4332"/>
+                <circle cx="50" cy="38" r="12" fill="none" stroke="#1B4332" stroke-width="2" opacity="0.4"/>
+            </svg>
+            <span class="church-name">Christ Church<span class="church-location">&#9753; Bluffton &#10087;</span></span>
+        </div>
         <ul class="mobile-nav-links">
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About</a></li>
@@ -75,8 +95,24 @@
             </div>
         </section>
 
-        <!-- Events Section -->
-        <section class="section about">
+        <!-- Next Event (JS auto-populates) -->
+        <section class="section about" id="next-event-section">
+            <div class="container">
+                <div class="section-header" data-animate="fade-up">
+                    <span class="section-label">Don't Miss It</span>
+                    <h2 class="section-title">Next Event</h2>
+                    <div class="section-divider">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+                <div class="events-list" id="next-event-list"></div>
+            </div>
+        </section>
+
+        <!-- Upcoming Events (JS auto-populates) -->
+        <section class="section" style="background: var(--lightest-gray);" id="upcoming-events-section">
             <div class="container">
                 <div class="section-header" data-animate="fade-up">
                     <span class="section-label">Mark Your Calendar</span>
@@ -87,170 +123,108 @@
                         <span></span>
                     </div>
                 </div>
-                <p class="lead" style="text-align: center; max-width: 800px; margin: 0 auto 60px;" data-animate="fade-up">From our very first worship service to community gatherings, there is always something happening at Christ Church Bluffton. We would love for you to join us as we grow together in faith and fellowship.</p>
-
-                <!-- Events List -->
-                <div class="events-list">
-
-                    <!-- Event 1: Launch Sunday -->
-                    <div class="event-card" data-animate="fade-up">
-                        <div class="event-date">
-                            <span class="event-month">MAR</span>
-                            <span class="event-day">15</span>
-                            <span class="event-year">2026</span>
-                        </div>
-                        <div class="event-image">
-                            <div class="image-placeholder">
-                                <span class="placeholder-icon">&#9961;</span>
-                                <p>Launch Sunday</p>
-                            </div>
-                        </div>
-                        <div class="event-details">
-                            <span class="event-category">Worship</span>
-                            <h3 class="event-title">Launch Sunday</h3>
-                            <div class="event-meta">
-                                <span class="event-time">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <circle cx="12" cy="12" r="10"/>
-                                        <path d="M12 6v6l4 2"/>
-                                    </svg>
-                                    10:00 AM
-                                </span>
-                                <span class="event-location">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                                        <circle cx="12" cy="10" r="3"/>
-                                    </svg>
-                                    Bluffton, SC (Venue TBA)
-                                </span>
-                            </div>
-                            <p class="event-description">Join us for our very first worship service as Christ Church Bluffton officially launches! This is the day we have been praying for and working toward. Come worship with us and be part of history as we begin this new chapter together.</p>
-                            <a href="contact.html" class="btn btn-primary">Get Reminded
-                                <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Event 2: Community Meet & Greet -->
-                    <div class="event-card" data-animate="fade-up">
-                        <div class="event-date">
-                            <span class="event-month">FEB</span>
-                            <span class="event-day">22</span>
-                            <span class="event-year">2026</span>
-                        </div>
-                        <div class="event-image">
-                            <div class="image-placeholder">
-                                <span class="placeholder-icon">&#129309;</span>
-                                <p>Meet & Greet</p>
-                            </div>
-                        </div>
-                        <div class="event-details">
-                            <span class="event-category">Fellowship</span>
-                            <h3 class="event-title">Community Meet & Greet</h3>
-                            <div class="event-meta">
-                                <span class="event-time">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <circle cx="12" cy="12" r="10"/>
-                                        <path d="M12 6v6l4 2"/>
-                                    </svg>
-                                    6:00 PM - 8:00 PM
-                                </span>
-                                <span class="event-location">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                                        <circle cx="12" cy="10" r="3"/>
-                                    </svg>
-                                    Location TBA
-                                </span>
-                            </div>
-                            <p class="event-description">An informal gathering to meet Pastor Jonathan and the founding members of Christ Church Bluffton. Enjoy food, conversation, and the chance to learn more about our vision. Whether you are curious about the church or ready to get involved, this is the perfect place to start.</p>
-                            <a href="contact.html" class="btn btn-primary">RSVP
-                                <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Event 3: Vision Dinner -->
-                    <div class="event-card" data-animate="fade-up">
-                        <div class="event-date">
-                            <span class="event-month">JAN</span>
-                            <span class="event-day">18</span>
-                            <span class="event-year">2026</span>
-                        </div>
-                        <div class="event-image">
-                            <div class="image-placeholder">
-                                <span class="placeholder-icon">&#127860;</span>
-                                <p>Vision Dinner</p>
-                            </div>
-                        </div>
-                        <div class="event-details">
-                            <span class="event-category">Information</span>
-                            <h3 class="event-title">Vision Dinner</h3>
-                            <div class="event-meta">
-                                <span class="event-time">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <circle cx="12" cy="12" r="10"/>
-                                        <path d="M12 6v6l4 2"/>
-                                    </svg>
-                                    6:30 PM
-                                </span>
-                                <span class="event-location">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                                        <circle cx="12" cy="10" r="3"/>
-                                    </svg>
-                                    Private Residence
-                                </span>
-                            </div>
-                            <p class="event-description">Join us for an intimate dinner where Pastor Jonathan will share the heart and vision behind Christ Church Bluffton. This is a wonderful opportunity to hear about where we are headed, ask questions, and discern how God might be calling you to be part of this new work in the Lowcountry.</p>
-                            <a href="contact.html" class="btn btn-primary">Request Invite
-                                <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Event 4: Easter Sunday Service -->
-                    <div class="event-card" data-animate="fade-up">
-                        <div class="event-date">
-                            <span class="event-month">APR</span>
-                            <span class="event-day">05</span>
-                            <span class="event-year">2026</span>
-                        </div>
-                        <div class="event-image">
-                            <div class="image-placeholder">
-                                <span class="placeholder-icon">&#10013;</span>
-                                <p>Easter Sunday</p>
-                            </div>
-                        </div>
-                        <div class="event-details">
-                            <span class="event-category">Worship</span>
-                            <h3 class="event-title">Easter Sunday Service</h3>
-                            <div class="event-meta">
-                                <span class="event-time">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <circle cx="12" cy="12" r="10"/>
-                                        <path d="M12 6v6l4 2"/>
-                                    </svg>
-                                    10:00 AM
-                                </span>
-                                <span class="event-location">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                                        <circle cx="12" cy="10" r="3"/>
-                                    </svg>
-                                    Bluffton, SC (Venue TBA)
-                                </span>
-                            </div>
-                            <p class="event-description">Celebrate the resurrection of our Lord Jesus Christ with us on Easter Sunday! Join Christ Church Bluffton for a joyful service of worship, praise, and Holy Communion as we proclaim together: He is risen indeed!</p>
-                            <a href="contact.html" class="btn btn-primary">Learn More
-                                <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                            </a>
-                        </div>
-                    </div>
-
-                </div>
+                <div class="events-list" id="upcoming-events-list"></div>
             </div>
         </section>
+
+        <!-- All Events Data (hidden, JS reads from here) -->
+        <template id="events-data">
+            <div class="event-card" data-event-date="2026-02-22">
+                <div class="event-date">
+                    <span class="event-month">FEB</span>
+                    <span class="event-day">22</span>
+                    <span class="event-year">2026</span>
+                </div>
+                <div class="event-image">
+                    <div class="image-placeholder">
+                        <span class="placeholder-icon">&#129309;</span>
+                        <p>Meet & Greet</p>
+                    </div>
+                </div>
+                <div class="event-details">
+                    <span class="event-category">Fellowship</span>
+                    <h3 class="event-title">Community Meet & Greet</h3>
+                    <div class="event-meta">
+                        <span class="event-time">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                            6:00 PM - 8:00 PM
+                        </span>
+                        <span class="event-location">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            Location TBA
+                        </span>
+                    </div>
+                    <p class="event-description">An informal gathering to meet Pastor Jonathan and the founding members of Christ Church Bluffton. Enjoy food, conversation, and the chance to learn more about our vision. Whether you are curious about the church or ready to get involved, this is the perfect place to start.</p>
+                    <a href="contact.html" class="btn btn-primary">RSVP
+                        <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="event-card" data-event-date="2026-03-15">
+                <div class="event-date">
+                    <span class="event-month">MAR</span>
+                    <span class="event-day">15</span>
+                    <span class="event-year">2026</span>
+                </div>
+                <div class="event-image">
+                    <div class="image-placeholder">
+                        <span class="placeholder-icon">&#9961;</span>
+                        <p>Launch Sunday</p>
+                    </div>
+                </div>
+                <div class="event-details">
+                    <span class="event-category">Worship</span>
+                    <h3 class="event-title">Launch Sunday</h3>
+                    <div class="event-meta">
+                        <span class="event-time">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                            10:00 AM
+                        </span>
+                        <span class="event-location">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            Bluffton, SC (Venue TBA)
+                        </span>
+                    </div>
+                    <p class="event-description">Join us for our very first worship service as Christ Church Bluffton officially launches! This is the day we have been praying for and working toward. Come worship with us and be part of history as we begin this new chapter together.</p>
+                    <a href="contact.html" class="btn btn-primary">Get Reminded
+                        <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="event-card" data-event-date="2026-04-05">
+                <div class="event-date">
+                    <span class="event-month">APR</span>
+                    <span class="event-day">05</span>
+                    <span class="event-year">2026</span>
+                </div>
+                <div class="event-image">
+                    <div class="image-placeholder">
+                        <span class="placeholder-icon">&#10013;</span>
+                        <p>Easter Sunday</p>
+                    </div>
+                </div>
+                <div class="event-details">
+                    <span class="event-category">Worship</span>
+                    <h3 class="event-title">Easter Sunday Service</h3>
+                    <div class="event-meta">
+                        <span class="event-time">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                            10:00 AM
+                        </span>
+                        <span class="event-location">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            Bluffton, SC (Venue TBA)
+                        </span>
+                    </div>
+                    <p class="event-description">Celebrate the resurrection of our Lord Jesus Christ with us on Easter Sunday! Join Christ Church Bluffton for a joyful service of worship, praise, and Holy Communion as we proclaim together: He is risen indeed!</p>
+                    <a href="contact.html" class="btn btn-primary">Learn More
+                        <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+            </div>
+        </template>
 
         <!-- Stay Connected Banner -->
         <section class="section donate section-slim" data-animate="fade-up">
@@ -279,10 +253,19 @@
             <div class="footer-main">
                 <div class="footer-branding">
                     <div class="footer-logo-row">
-                        <div class="footer-logo-box"><span>LOGO<br>HOLDER</span></div>
-                        <span class="footer-church-name">Christ Church Bluffton</span>
+                        <svg class="footer-logo-cross" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="50" cy="38" r="16" fill="none" stroke="#1B4332" stroke-width="3"/>
+                            <rect x="46" y="8" width="8" height="84" rx="2" fill="#1B4332"/>
+                            <rect x="24" y="30" width="52" height="8" rx="2" fill="#1B4332"/>
+                            <circle cx="50" cy="38" r="12" fill="none" stroke="#1B4332" stroke-width="2" opacity="0.4"/>
+                        </svg>
+                        <span class="footer-church-name">Christ Church<span class="footer-church-location">&#9753; Bluffton &#10087;</span></span>
                     </div>
                     <p class="footer-tagline">A Christ-centered Anglican community coming to Bluffton in 2026.</p>
+                    <div class="footer-contact-info">
+                        <a href="tel:+18435555555"><i class="fa fa-phone"></i> (843) 555-5555</a>
+                        <a href="mailto:info@christchurchbluffton.org"><i class="fa fa-envelope"></i> info@christchurchbluffton.org</a>
+                    </div>
                 </div>
                 <div class="footer-column">
                     <h4>Quick Links</h4>
@@ -305,7 +288,8 @@
                 <div class="footer-column footer-newsletter">
                     <h4>Newsletter</h4>
                     <p>Stay updated on our journey</p>
-                    <form class="newsletter-form" action="#" method="POST">
+                    <form class="newsletter-form" name="newsletter" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+                        <input type="hidden" name="bot-field">
                         <input type="email" name="email" placeholder="Your email" required>
                         <button type="submit" class="btn-subscribe">Subscribe</button>
                     </form>
@@ -322,6 +306,39 @@
             </div>
         </div>
     </footer>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg>
+    </button>
+
+    <!-- Prayer Request FAB (Mobile) -->
+    <div class="prayer-overlay" id="prayerOverlay"></div>
+    <button class="prayer-fab" id="prayerFab" aria-label="Prayer Request">Prayer Request</button>
+    <div class="prayer-popup" id="prayerPopup">
+        <div class="prayer-popup-header">
+            <h4>Prayer Request</h4>
+            <button class="prayer-popup-close" id="prayerClose" aria-label="Close">&times;</button>
+        </div>
+        <div id="prayerFormBody">
+            <form class="prayer-popup-body" id="prayerForm">
+                <div class="form-group">
+                    <label for="prayerName">Name <span class="optional">(optional)</span></label>
+                    <input type="text" id="prayerName" name="name" placeholder="Your name">
+                </div>
+                <div class="form-group">
+                    <label for="prayerText">Your Prayer <span class="required">*</span></label>
+                    <textarea id="prayerText" name="prayer" placeholder="Share your prayer request..." required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit Prayer</button>
+            </form>
+        </div>
+        <div class="prayer-success" id="prayerSuccess">
+            <span class="prayer-success-icon">&#128591;</span>
+            <h4>Prayer Received</h4>
+            <p>Thank you for sharing your prayer. Our community will be lifting you up.</p>
+        </div>
+    </div>
 
     <script src="js/script.js"></script>
 </body>
