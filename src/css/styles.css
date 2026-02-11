@@ -836,6 +836,13 @@ ul {
     line-height: 1;
 }
 
+.ornament-icon svg,
+.divider-icon svg,
+.placeholder-icon svg {
+    display: inline-block;
+    vertical-align: middle;
+}
+
 .section-label {
     display: inline-block;
     font-family: var(--font-body);
@@ -1151,6 +1158,10 @@ ul {
 .divider-icon {
     color: var(--gold);
     font-size: 4rem;
+    font-family: 'Cinzel', serif;
+    font-style: normal;
+    text-rendering: optimizeLegibility;
+    -webkit-text-stroke: 0;
 }
 
 .hero-tagline {
