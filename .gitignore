@@ -22,4 +22,5 @@ CCB EIN*
 
 # Non-source assets in root
 *.jpg
+!src/images/og-image.jpg
 ANGLICAN-CHURCH-INFO.txt
