@@ -161,21 +161,31 @@
                 <div class="give-form-wrapper" data-animate="fade-left">
                     <div class="donation-box">
                         <div class="donation-header">
-                            <span class="donation-icon">&#10084;</span>
+                            <svg class="donation-cross" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="50" cy="38" r="16" fill="none" stroke="#A0875A" stroke-width="3"/>
+                                <rect x="46" y="8" width="8" height="84" rx="2" fill="#A0875A"/>
+                                <rect x="24" y="30" width="52" height="8" rx="2" fill="#A0875A"/>
+                                <circle cx="50" cy="38" r="12" fill="none" stroke="#A0875A" stroke-width="2" opacity="0.4"/>
+                            </svg>
                             <h3>Make a Donation</h3>
                             <p>Your gift makes a difference</p>
                         </div>
-                        <div class="donation-placeholder">
-                            <div class="placeholder-content">
-                                <span class="placeholder-icon-large">&#128179;</span>
-                                <h4 class="placeholder-title">Donation Widget</h4>
-                                <p class="placeholder-text">Third-party giving platform integration will appear here.</p>
-                                <p class="placeholder-note">Compatible with Tithe.ly, Pushpay, Planning Center, and other popular church giving platforms.</p>
+                        <div class="donation-body">
+                            <div class="donation-message">
+                                <p>Every gift &mdash; large or small &mdash; helps build a Christ-centered community in the Lowcountry.</p>
+                            </div>
+                            <button class="tithely-give-button give-btn-custom" data-form="25af70b1-a353-4cd7-a9f2-dad5c435f43c">
+                                <svg class="give-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                                Give Now
+                            </button>
+                            <div class="donation-secure">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                                <span>Secure giving powered by Tithe.ly</span>
                             </div>
                         </div>
                         <div class="donation-footer">
                             <p>Prefer to give another way?</p>
-                            <a href="contact.html" class="btn btn-outline" style="border-color: var(--navy-blue); color: var(--navy-blue);">Contact Us</a>
+                            <a href="contact.html" class="btn btn-outline-give">Contact Us</a>
                         </div>
                     </div>
                 </div>
@@ -298,6 +308,7 @@
         </div>
     </div>
 
+    <script src="https://static.tithely.com/give/give.js" defer></script>
     <script src="js/script.js"></script>
 </body>
 </html>

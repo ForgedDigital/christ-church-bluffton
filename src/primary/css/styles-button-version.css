@@ -2073,80 +2073,102 @@ ul {
 
 .donation-header {
     background: linear-gradient(135deg, var(--navy-blue) 0%, #0F2B1E 100%);
-    padding: 35px 30px;
+    padding: 40px 30px 35px;
     text-align: center;
     color: var(--white);
 }
 
-.donation-icon {
-    font-size: 2rem;
-    display: block;
-    margin-bottom: 12px;
-    color: var(--gold);
+.donation-cross {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 16px;
 }
 
 .donation-header h3 {
     font-family: var(--font-heading);
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     color: var(--white);
     margin-bottom: 8px;
+    letter-spacing: 0.5px;
 }
 
 .donation-header p {
-    font-family: var(--font-body);
-    color: rgba(255, 255, 255, 0.85);
-    font-size: 0.95rem;
+    font-family: var(--font-accent);
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1rem;
 }
 
-.donation-placeholder {
-    padding: 50px 30px;
-    background: var(--white);
-    min-height: 280px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-top: 3px solid var(--gold);
-}
-
-.placeholder-content {
+.donation-body {
+    padding: 40px 30px;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
 }
 
-.placeholder-icon-large {
-    font-size: 3.5rem;
-    margin-bottom: 18px;
-    display: block;
-    opacity: 0.4;
-}
-
-.placeholder-title {
-    font-family: var(--font-heading);
-    font-size: 1.1rem;
-    color: var(--navy-blue);
-    margin-bottom: 12px;
-}
-
-.placeholder-text {
+.donation-message p {
     font-family: var(--font-body);
     color: var(--text-gray);
     font-size: 0.95rem;
     line-height: 1.7;
-    margin-bottom: 12px;
 }
 
-.placeholder-note {
+.give-btn-custom {
+    background: linear-gradient(135deg, var(--navy-blue) 0%, #245a3a 100%) !important;
+    color: var(--white) !important;
+    font-family: var(--font-heading) !important;
+    font-size: 1.15rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 1px !important;
+    padding: 16px 60px !important;
+    border: none !important;
+    border-radius: 50px !important;
+    cursor: pointer !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 4px 15px rgba(27, 67, 50, 0.25) !important;
+    text-shadow: none !important;
+    background-image: none !important;
+    float: none !important;
+}
+
+.give-btn-custom:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 25px rgba(27, 67, 50, 0.35) !important;
+}
+
+.give-btn-icon {
+    width: 20px;
+    height: 20px;
+    stroke: var(--gold);
+    fill: none;
+}
+
+.donation-secure {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #888;
+    font-size: 0.8rem;
     font-family: var(--font-body);
-    color: #999;
-    font-size: 0.85rem;
-    font-style: italic;
-    line-height: 1.6;
+}
+
+.donation-secure svg {
+    width: 14px;
+    height: 14px;
+    stroke: var(--gold);
+    flex-shrink: 0;
 }
 
 .donation-footer {
     padding: 25px 30px;
     text-align: center;
     background: var(--lightest-gray);
-    border-top: 1px solid var(--light-gray);
+    border-top: 1px solid rgba(27, 67, 50, 0.08);
 }
 
 .donation-footer p {
@@ -2154,6 +2176,24 @@ ul {
     color: var(--text-gray);
     font-size: 0.9rem;
     margin-bottom: 15px;
+}
+
+.btn-outline-give {
+    display: inline-block;
+    padding: 10px 28px;
+    border: 1.5px solid var(--navy-blue);
+    color: var(--navy-blue);
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-give:hover {
+    background: var(--navy-blue);
+    color: var(--white);
 }
 
 /* ========================================
@@ -2666,48 +2706,7 @@ ul {
     color: var(--gold);
 }
 
-/* ========================================
-   Donation Placeholder Content
-   ======================================== */
-.donation-placeholder {
-    text-align: center;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.donation-placeholder-icon {
-    font-size: 4rem;
-    margin-bottom: 20px;
-    opacity: 0.5;
-    display: block;
-}
-
-.donation-placeholder h4 {
-    font-family: var(--font-heading);
-    font-size: 1.2rem;
-    color: var(--navy-blue);
-    margin-bottom: 10px;
-}
-
-.donation-placeholder p {
-    font-family: var(--font-body);
-    color: var(--text-gray);
-    font-size: 0.95rem;
-    margin-bottom: 10px;
-}
-
-.donation-placeholder-note {
-    font-family: var(--font-body);
-    color: #777777;
-    font-size: 0.85rem;
-    font-style: italic;
-}
-
-.donation-heart {
-    font-size: 2.5rem;
-    display: block;
-    margin-bottom: 10px;
-}
+/* (Donation placeholder styles removed — replaced by Tithe.ly integration) */
 
 /* 404 Page */
 .error-page {
