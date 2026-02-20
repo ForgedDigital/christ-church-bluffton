@@ -41,21 +41,16 @@ exports.handler = async (event) => {
 
     // Send email notification via Resend
     if (process.env.RESEND_API_KEY) {
-      console.log('[Contact] Sending Resend email to:', process.env.NOTIFY_EMAIL);
-      const emailRes = await fetch('https://api.resend.com/emails', {
+      await fetch('https://api.resend.com/emails', {
         method: 'POST',
         headers: { 'Authorization': `Bearer ${process.env.RESEND_API_KEY}`, 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          from: process.env.EMAIL_FROM || 'Christ Church Bluffton <notifications@resend.dev>',
+          from: process.env.EMAIL_FROM || 'Christ Church Bluffton <notifications@christchurchbluffton.org>',
           to: process.env.NOTIFY_EMAIL,
           subject: `New Contact Form — ${fullName}`,
           text: `New contact form submission:\n\nName: ${fullName}\nEmail: ${email}\nPhone: ${phone || '(none)'}\nInterest: ${interest}\nMessage: ${message || '(none)'}`
         })
       });
-      const emailBody = await emailRes.text();
-      console.log('[Contact] Resend response:', emailRes.status, emailBody);
-    } else {
-      console.log('[Contact] No RESEND_API_KEY found, skipping email');
     }
 
     return { statusCode: 200, body: JSON.stringify({ success: true }) };
