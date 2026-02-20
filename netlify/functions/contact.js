@@ -30,11 +30,11 @@ exports.handler = async (event) => {
     const last = spaceIdx > 0 ? fullName.trim().substring(spaceIdx + 1) : '';
 
     // Add person to Breeze
-    const fields = JSON.stringify({
-      [process.env.BREEZE_EMAIL_FIELD_ID]: { field_type: 'email', response: true, details: { address: email } },
-      ...(phone ? { [process.env.BREEZE_PHONE_FIELD_ID]: { field_type: 'phone', response: true, details: { phone_mobile: phone } } } : {})
-    });
-    const person = await breezeRequest('people/add', { first, last, fields_json: fields });
+    const fields = [
+      { field_id: process.env.BREEZE_EMAIL_FIELD_ID, field_type: 'email', response: true, details: { address: email } },
+      ...(phone ? [{ field_id: process.env.BREEZE_PHONE_FIELD_ID, field_type: 'phone', response: true, details: { phone_mobile: phone } }] : [])
+    ];
+    const person = await breezeRequest('people/add', { first, last, fields_json: JSON.stringify(fields) });
 
     // Assign "Contact Form" tag
     await breezeRequest('tags/assign', { person_id: person.id, tag_id: process.env.BREEZE_TAG_CONTACT });

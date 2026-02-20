@@ -35,12 +35,14 @@ async function breezeRequest(endpoint, params) {
 }
 
 async function addPerson(first, last, email, phone) {
-  const fields = JSON.stringify({
-    [process.env.BREEZE_EMAIL_FIELD_ID]: { field_type: 'email', response: true, details: { address: email } },
-    ...(phone ? { [process.env.BREEZE_PHONE_FIELD_ID]: { field_type: 'phone', response: true, details: { phone_mobile: phone } } } : {})
-  });
+  const fields = [
+    ...(email ? [{ field_id: process.env.BREEZE_EMAIL_FIELD_ID, field_type: 'email', response: true, details: { address: email } }] : []),
+    ...(phone ? [{ field_id: process.env.BREEZE_PHONE_FIELD_ID, field_type: 'phone', response: true, details: { phone_mobile: phone } }] : [])
+  ];
 
-  return breezeRequest('people/add', { first, last, fields_json: fields });
+  const params = { first, last };
+  if (fields.length) params.fields_json = JSON.stringify(fields);
+  return breezeRequest('people/add', params);
 }
 
 async function assignTag(personId, tagId) {

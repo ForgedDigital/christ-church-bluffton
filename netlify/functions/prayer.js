@@ -32,8 +32,7 @@ exports.handler = async (event) => {
       const last = spaceIdx > 0 ? trimmed.substring(spaceIdx + 1) : '';
 
       // Add person to Breeze
-      const fields = JSON.stringify({});
-      const person = await breezeRequest('people/add', { first, last, fields_json: fields });
+      const person = await breezeRequest('people/add', { first, last });
 
       // Assign "Prayer Request" tag
       await breezeRequest('tags/assign', { person_id: person.id, tag_id: process.env.BREEZE_TAG_PRAYER });

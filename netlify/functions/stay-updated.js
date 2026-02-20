@@ -30,10 +30,10 @@ exports.handler = async (event) => {
     const last = '(Stay Updated)';
 
     // Add person to Breeze
-    const fields = JSON.stringify({
-      [process.env.BREEZE_EMAIL_FIELD_ID]: { field_type: 'email', response: true, details: { address: email } }
-    });
-    const person = await breezeRequest('people/add', { first, last, fields_json: fields });
+    const fields = [
+      { field_id: process.env.BREEZE_EMAIL_FIELD_ID, field_type: 'email', response: true, details: { address: email } }
+    ];
+    const person = await breezeRequest('people/add', { first, last, fields_json: JSON.stringify(fields) });
 
     // Assign "Stay Updated" tag
     await breezeRequest('tags/assign', { person_id: person.id, tag_id: process.env.BREEZE_TAG_STAYUPDATED });
