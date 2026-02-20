@@ -1,0 +1,13 @@
+{
+  "name": "ccb-local-server",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Local dev server for Christ Church Bluffton — Breeze API integration",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2"
+  }
+}

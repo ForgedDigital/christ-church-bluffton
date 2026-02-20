@@ -227,12 +227,123 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        // Handle form submit (placeholder until Netlify Forms)
+        // Handle prayer form submit → Breeze API
         form.addEventListener('submit', function(e) {
             e.preventDefault();
-            formBody.style.display = 'none';
-            success.classList.add('active');
-            setTimeout(closePrayer, 2500);
+            var submitBtn = form.querySelector('button[type="submit"]');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Submitting...';
+
+            var data = {
+                name: (form.querySelector('[name="name"]').value || '').trim(),
+                prayer: (form.querySelector('[name="prayer"]').value || '').trim()
+            };
+
+            fetch('/api/prayer', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            })
+            .then(function() {
+                // Always show success (pastoral UX)
+                formBody.style.display = 'none';
+                success.classList.add('active');
+                setTimeout(closePrayer, 2500);
+            })
+            .catch(function() {
+                // Still show success even on network error
+                formBody.style.display = 'none';
+                success.classList.add('active');
+                setTimeout(closePrayer, 2500);
+            })
+            .finally(function() {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Submit Prayer';
+            });
+        });
+    })();
+
+    // Contact Form → Breeze API
+    (function() {
+        var form = document.querySelector('.contact-form');
+        if (!form) return;
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            var submitBtn = form.querySelector('button[type="submit"]');
+            var origHTML = submitBtn.innerHTML;
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+
+            var data = {
+                fullName: form.querySelector('#fullName').value.trim(),
+                email: form.querySelector('#email').value.trim(),
+                phone: (form.querySelector('#phone').value || '').trim(),
+                interest: form.querySelector('#interest').value,
+                message: (form.querySelector('#message').value || '').trim()
+            };
+
+            fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            })
+            .then(function(res) { return res.json(); })
+            .then(function(result) {
+                if (result.success) {
+                    form.innerHTML = '<div class="form-success"><span class="prayer-success-icon">&#10003;</span><h4>Message Sent</h4><p>Thank you for reaching out! We will be in touch soon.</p></div>';
+                } else {
+                    throw new Error(result.error);
+                }
+            })
+            .catch(function() {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = origHTML;
+                alert('Something went wrong. Please try again or email us directly.');
+            });
+        });
+    })();
+
+    // Newsletter Form (footer on all pages) → Breeze API
+    (function() {
+        var forms = document.querySelectorAll('.newsletter-form');
+        if (!forms.length) return;
+
+        forms.forEach(function(form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                var submitBtn = form.querySelector('button[type="submit"]');
+                var emailInput = form.querySelector('input[name="email"]');
+                var origText = submitBtn.textContent;
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Subscribing...';
+
+                fetch('/api/stay-updated', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email: emailInput.value.trim() })
+                })
+                .then(function(res) { return res.json(); })
+                .then(function(result) {
+                    if (result.success) {
+                        emailInput.value = '';
+                        submitBtn.textContent = 'Subscribed!';
+                        submitBtn.classList.add('subscribed');
+                        setTimeout(function() {
+                            submitBtn.textContent = origText;
+                            submitBtn.classList.remove('subscribed');
+                            submitBtn.disabled = false;
+                        }, 3000);
+                    } else {
+                        throw new Error(result.error);
+                    }
+                })
+                .catch(function() {
+                    submitBtn.textContent = origText;
+                    submitBtn.disabled = false;
+                    alert('Something went wrong. Please try again.');
+                });
+            });
         });
     })();
 });
