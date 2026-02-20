@@ -25,18 +25,16 @@ exports.handler = async (event) => {
       return { statusCode: 400, body: JSON.stringify({ error: 'Prayer text is required.' }) };
     }
 
-    if (name && name.trim()) {
-      const trimmed = name.trim();
-      const spaceIdx = trimmed.indexOf(' ');
-      const first = spaceIdx > 0 ? trimmed.substring(0, spaceIdx) : trimmed;
-      const last = spaceIdx > 0 ? trimmed.substring(spaceIdx + 1) : '';
+    const displayName = (name && name.trim()) ? name.trim() : 'Anonymous';
+    const spaceIdx = displayName.indexOf(' ');
+    const first = spaceIdx > 0 ? displayName.substring(0, spaceIdx) : displayName;
+    const last = spaceIdx > 0 ? displayName.substring(spaceIdx + 1) : '(Prayer Request)';
 
-      // Add person to Breeze
-      const person = await breezeRequest('people/add', { first, last });
+    // Add person to Breeze
+    const person = await breezeRequest('people/add', { first, last });
 
-      // Assign "Prayer Request" tag
-      await breezeRequest('tags/assign', { person_id: person.id, tag_id: process.env.BREEZE_TAG_PRAYER });
-    }
+    // Assign "Prayer Request" tag
+    await breezeRequest('tags/assign', { person_id: person.id, tag_id: process.env.BREEZE_TAG_PRAYER });
 
     // Send email notification via Resend
     if (process.env.RESEND_API_KEY) {
