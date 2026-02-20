@@ -39,5 +39,7 @@ This plan is actually simpler and has zero ongoing cost. Netlify Forms free tier
 - All 3 forms tested and working: Contact, Prayer Request, Stay Updated
 
 **TODO for production launch:**
-- Re-add all 3 environment variables on the production Netlify site
+- Re-add all 3 Netlify environment variables (`RESEND_API_KEY`, `EMAIL_FROM`, `NOTIFY_EMAIL`) on the production Netlify site
 - DNS and Resend domain verification already done (shared across environments)
+- Add spam protection (CAPTCHA + honeypot) to all forms before going live
+- Update `NOTIFY_EMAIL` to final recipient(s) once Google Workspace emails are set up
