@@ -46,7 +46,7 @@ exports.handler = async (event) => {
         body: JSON.stringify({
           from: process.env.EMAIL_FROM || 'Christ Church Bluffton <notifications@resend.dev>',
           to: process.env.NOTIFY_EMAIL,
-          subject: `New Newsletter Signup — ${email}`,
+          subject: `New Stay Updated Signup — ${email}`,
           text: `New stay updated signup:\n\nEmail: ${email}`
         })
       });
