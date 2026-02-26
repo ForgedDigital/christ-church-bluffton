@@ -77,40 +77,54 @@
 - [ ] **Cross-browser test**: Chrome, Firefox, Safari, Edge, mobile
 - [ ] **Final code cleanup**: remove any console.logs, unused CSS, etc.
 
-## Phase 4: Deployment 🚀 TODO
-> Requires: Phase 2 content + Phase 3 dev work complete.
+## Phase 4: Deployment 🚀 IN PROGRESS
+> Production site is LIVE at christchurchbluffton.org (donation page only).
+> Future pages are added to `live/` folder and manually deployed to Netlify.
 
-### Netlify Setup
-- [x] Create site on Netlify (connect GitHub repo: ForgedDigital/christ-church-bluffton)
-- [x] Verify auto-deploy from main branch works
+### Two Netlify Sites
+1. **Review/Testing** — `christchuchbluffton.netlify.app` (Kevin's Netlify, auto-deploys from GitHub, serves `src/`)
+2. **Production** — `christchurchbluffton.org` (separate Netlify account, manual drag-and-drop of `live/` folder)
+
+### Production Deployment Workflow
+> **All future page additions build off the `live/` folder.**
+> When a new page is ready to go public:
+> 1. Build/finalize the page in `src/primary/`
+> 2. Copy production-ready version to `live/`
+> 3. Adjust paths (images → `images/`, remove dev-only links)
+> 4. Ensure GA4 tracking, OG tags, and CSP are included
+> 5. Drag-and-drop `live/` folder to production Netlify
+>
+> The `live/` folder is the single source of truth for what's on christchurchbluffton.org.
+
+### Live Site Status
+- [x] Domain `christchurchbluffton.org` → Netlify (GoDaddy DNS, SSL active)
+- [x] Donation page live as landing page (`/`)
+- [x] Privacy policy (`/privacy`)
+- [x] Terms of use (`/terms`)
+- [x] Custom 404 page
+- [x] Tithe.ly modal working (CSP configured)
+- [x] Security headers (HSTS, X-Frame, CSP, etc.)
+- [x] Clean URLs enabled (no .html)
 - [ ] Re-add Netlify environment variables on production site: `RESEND_API_KEY`, `EMAIL_FROM`, `NOTIFY_EMAIL`
 - [ ] Update `NOTIFY_EMAIL` to final recipient(s) once Google Workspace emails are configured
 - [ ] Verify all 3 forms work on production URL
 
-### Domain Setup
-- [ ] Purchase/confirm domain
-- [ ] Point domain DNS to Netlify
-- [ ] Enable HTTPS (auto via Let's Encrypt)
-- [ ] Verify clean URLs work on live site
-- [ ] Test all forms on live site
+## Phase 5: SEO & Analytics 📊 IN PROGRESS
 
-## Phase 5: Post-Launch SEO & Analytics 📊 TODO
-> Do AFTER domain is pointed to Netlify and site is live.
+### Google Analytics (GA4) ✅ DONE
+- [x] Create GA4 property (Measurement ID: `G-PTWWV0M0DX`)
+- [x] Add tracking code to all pages (live + primary site)
+- [x] CSP updated to allow Google Tag Manager + Analytics
+- [ ] Verify data is flowing in GA4 dashboard
 
-### Google Analytics (GA4)
-- [ ] Create GA4 property
-- [ ] Add tracking code to all 10 pages
-- [ ] Verify data is flowing
-
-### Google Search Console
-- [ ] Go to https://search.google.com/search-console
-- [ ] Add property → URL prefix → https://[domain]
-- [ ] Verify ownership (DNS TXT record or HTML file)
-- [ ] Submit sitemap.xml
+### Google Search Console ✅ DONE
+- [x] Add domain property `christchurchbluffton.org`
+- [x] Verified via Google Workspace (auto-verified)
+- [x] Kevin added as Full user
+- [ ] Submit sitemap.xml (when full site is live)
 - [ ] Confirm pages are being indexed (check back in 1-2 weeks)
-- [ ] Request indexing for key pages if needed
 
-### SEO Audit
+### SEO Audit (for full site launch)
 - [ ] Verify sitemap.xml has all pages and is accessible
 - [ ] Verify robots.txt references sitemap
 - [ ] Add canonical tags to every page
@@ -125,12 +139,14 @@
 ## Quick Reference
 | Item | Value |
 |---|---|
-| Project folder | `7 Christ Church Bluffton` |
-| Source code | `src/` subfolder |
-| Dev server | `http-server src/ -p 3005` |
+| Project folder | `Christ Church Bluffton` |
+| Source code (dev) | `src/` subfolder |
+| Production site | `live/` subfolder (drag-and-drop to Netlify) |
+| Dev server | `http-server src/ -p 3011` |
 | GitHub | `ForgedDigital/christ-church-bluffton` |
-| Deploy | `Deploy-Christ_Church-Bluffton.bat` (⚠️ fix path first) |
-| Netlify config | `netlify.toml` (publish = src/) |
-| Domain | TBD |
+| Production URL | `christchurchbluffton.org` |
+| GA4 ID | `G-PTWWV0M0DX` |
+| Netlify config (dev) | `netlify.toml` (root) |
+| Netlify config (prod) | `live/netlify.toml` |
 | Client | Rev. Jonathan Riddle |
 | Billing | Donation (free) |
