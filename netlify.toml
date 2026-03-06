@@ -1,5 +1,5 @@
 [build]
-  publish = "src/"
+  publish = "src/primary/"
   functions = "netlify/functions"
 
 # Clean URLs - removes .html from addresses
