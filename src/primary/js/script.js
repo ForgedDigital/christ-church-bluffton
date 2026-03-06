@@ -234,9 +234,12 @@ document.addEventListener('DOMContentLoaded', function() {
             submitBtn.disabled = true;
             submitBtn.textContent = 'Submitting...';
 
+            var turnstileInput = form.querySelector('[name="cf-turnstile-response"]');
             var data = {
                 name: (form.querySelector('[name="name"]').value || '').trim(),
-                prayer: (form.querySelector('[name="prayer"]').value || '').trim()
+                prayer: (form.querySelector('[name="prayer"]').value || '').trim(),
+                website_url_confirm: (form.querySelector('[name="website_url_confirm"]').value || ''),
+                turnstileToken: turnstileInput ? turnstileInput.value : ''
             };
 
             fetch('/api/prayer', {
@@ -259,6 +262,10 @@ document.addEventListener('DOMContentLoaded', function() {
             .finally(function() {
                 submitBtn.disabled = false;
                 submitBtn.textContent = 'Submit Prayer';
+                if (typeof turnstile !== 'undefined') {
+                    var widget = form.querySelector('.cf-turnstile');
+                    if (widget) turnstile.reset(widget);
+                }
             });
         });
     })();
@@ -275,12 +282,15 @@ document.addEventListener('DOMContentLoaded', function() {
             submitBtn.disabled = true;
             submitBtn.textContent = 'Sending...';
 
+            var turnstileInput = form.querySelector('[name="cf-turnstile-response"]');
             var data = {
                 fullName: form.querySelector('#fullName').value.trim(),
                 email: form.querySelector('#email').value.trim(),
                 phone: (form.querySelector('#phone').value || '').trim(),
                 interest: form.querySelector('#interest').value,
-                message: (form.querySelector('#message').value || '').trim()
+                message: (form.querySelector('#message').value || '').trim(),
+                website_url_confirm: (form.querySelector('[name="website_url_confirm"]').value || ''),
+                turnstileToken: turnstileInput ? turnstileInput.value : ''
             };
 
             fetch('/api/contact', {
@@ -300,6 +310,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = origHTML;
                 alert('Something went wrong. Please try again or email us directly.');
+                if (typeof turnstile !== 'undefined') {
+                    var widget = form.querySelector('.cf-turnstile');
+                    if (widget) turnstile.reset(widget);
+                }
             });
         });
     })();
@@ -318,10 +332,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 submitBtn.disabled = true;
                 submitBtn.textContent = 'Subscribing...';
 
+                var honeypot = form.querySelector('[name="website_url_confirm"]');
+                var turnstileInput = form.querySelector('[name="cf-turnstile-response"]');
                 fetch('/api/stay-updated', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ email: emailInput.value.trim() })
+                    body: JSON.stringify({ email: emailInput.value.trim(), website_url_confirm: honeypot ? honeypot.value : '', turnstileToken: turnstileInput ? turnstileInput.value : '' })
                 })
                 .then(function(res) { return res.json(); })
                 .then(function(result) {
@@ -342,6 +358,10 @@ document.addEventListener('DOMContentLoaded', function() {
                     submitBtn.textContent = origText;
                     submitBtn.disabled = false;
                     alert('Something went wrong. Please try again.');
+                    if (typeof turnstile !== 'undefined') {
+                        var widget = form.querySelector('.cf-turnstile');
+                        if (widget) turnstile.reset(widget);
+                    }
                 });
             });
         });

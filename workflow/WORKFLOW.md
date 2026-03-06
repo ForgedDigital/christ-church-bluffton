@@ -14,8 +14,8 @@
 - [x] Back-to-top button
 - [x] Scroll animations via IntersectionObserver
 - [x] Loader on index.html (skip on revisit via sessionStorage)
-- [x] Newsletter form in footer (Netlify Forms + honeypot)
-- [x] Contact form (Netlify Forms + honeypot)
+- [x] Newsletter form in footer (Netlify Functions → Breeze API + Resend)
+- [x] Contact form (Netlify Functions → Breeze API + Resend)
 - [x] Meta descriptions + OG tags on all pages
 - [x] OG image for social media link previews
 - [x] Footer contact info with gold icons
@@ -71,9 +71,25 @@
 - [x] **Stay Updated signup**: Netlify Function → Breeze API + Resend email (tested & working)
 - [x] **Resend setup**: Account created, domain verified, API key added to Netlify env vars
 - [x] **Test all forms**: All 3 forms tested on testing URL — Breeze + email working
-- [ ] **Spam protection**: Add CAPTCHA + honeypot fields to all forms before going live
-- [ ] **Fix Deploy bat**: path says `7.1 Christ Church Bluffton` — should be `7 Christ Church Bluffton`
-- [ ] **Accessibility check**: run Lighthouse audit, fix any issues
+- [ ] **Tithely Member Login Integration**:
+  - [x] Get church-specific ID from Tithely admin dashboard → **12530887**
+  - [x] Build login URL: `https://tithe.ly/integration-login/12530887`
+  - [ ] Add "Member Login" button to site nav (desktop + mobile)
+  - [ ] Style button consistent with existing nav (match Give button pattern)
+  - [ ] Enable Member Directory in Tithely admin (configure visibility/privacy)
+  - [ ] Test login flow end-to-end (create account → find church → view directory → manage family)
+  - [ ] Copy to `live/` folder when ready for production
+- [x] **Spam protection (honeypot)**: Hidden `website_url_confirm` field on all 3 forms (contact, prayer, newsletter) + server-side checks in all 3 Netlify Functions
+- [x] **Spam protection (CAPTCHA)**: Cloudflare Turnstile on all 3 forms (site key: `0x4AAAAAACneNwgE844_oOI-`, secret in Netlify env `TURNSTILE_SECRET_KEY`)
+- [x] **Accessibility (code-level)**: skip-to-content link, focus-visible outlines, sr-only class, prefers-reduced-motion, main landmark with id on all pages
+- [x] **SEO meta tags (dev site)**: canonical URLs, og:url, og:site_name, Twitter card tags, absolute og:image URLs on all 9 indexable pages
+- [x] **404 noindex**: added `<meta name="robots" content="noindex">` to 404.html
+- [x] **Apple Touch Icon link tag**: added to all 10 pages (PNG file still needed)
+- [x] **Hero fetchpriority**: added `fetchpriority="high"` to index.html hero image
+- [x] **Removed "example" placeholder**: removed `<span class="logo-example">` from header on all 10 pages
+- [ ] **Create apple-touch-icon.png**: 180x180px PNG of church logo (needed for iOS bookmarks)
+- [ ] **Self-host Google Fonts**: download woff2 files, add @font-face, remove Google Fonts links (performance)
+- [ ] **Accessibility audit**: run Lighthouse + WAVE, fix any remaining issues
 - [ ] **Cross-browser test**: Chrome, Firefox, Safari, Edge, mobile
 - [ ] **Final code cleanup**: remove any console.logs, unused CSS, etc.
 
@@ -105,11 +121,20 @@
 - [x] Tithe.ly modal working (CSP configured)
 - [x] Security headers (HSTS, X-Frame, CSP, etc.)
 - [x] Clean URLs enabled (no .html)
+- [x] robots.txt (blocks /coming-soon, references sitemap)
+- [x] sitemap.xml (indexable pages only)
+- [x] JSON-LD structured data (Church + NonprofitOrganization)
+- [x] Canonical tags on all pages
+- [x] OG + Twitter card tags on all pages
+- [x] H1 tag on all pages (sr-only on donation/index)
+- [x] Meta descriptions on all pages
+- [x] 301 redirects: `/donation` → `/`, `/coming-soon` → `/`
+- [x] Treasurer email for alternate giving (treasurer@christchurchbluffton.org)
 - [ ] Re-add Netlify environment variables on production site: `RESEND_API_KEY`, `EMAIL_FROM`, `NOTIFY_EMAIL`
 - [ ] Update `NOTIFY_EMAIL` to final recipient(s) once Google Workspace emails are configured
 - [ ] Verify all 3 forms work on production URL
 
-## Phase 5: SEO & Analytics 📊 IN PROGRESS
+## Phase 5: SEO & Analytics 📊 DONE (for donation page)
 
 ### Google Analytics (GA4) ✅ DONE
 - [x] Create GA4 property (Measurement ID: `G-PTWWV0M0DX`)
@@ -121,18 +146,22 @@
 - [x] Add domain property `christchurchbluffton.org`
 - [x] Verified via Google Workspace (auto-verified)
 - [x] Kevin added as Full user
-- [ ] Submit sitemap.xml (when full site is live)
+- [x] sitemap.xml deployed with live site
+- [ ] Submit sitemap URL in Search Console
 - [ ] Confirm pages are being indexed (check back in 1-2 weeks)
 
-### SEO Audit (for full site launch)
-- [ ] Verify sitemap.xml has all pages and is accessible
-- [ ] Verify robots.txt references sitemap
-- [ ] Add canonical tags to every page
-- [ ] Verify meta robots: `index, follow` on real pages, `noindex` on 404
-- [ ] Verify og:image / twitter:image on all pages
-- [ ] Verify meta descriptions are unique per page
+### SEO Audit ✅ DONE (donation page)
+- [x] sitemap.xml — only indexable pages listed
+- [x] robots.txt — references sitemap, blocks /coming-soon
+- [x] Canonical tags on all live pages
+- [x] Meta robots: `index, follow` on donation, `noindex` on legal/404/coming-soon
+- [x] og:image + twitter:image on all pages
+- [x] Meta descriptions unique per page
+- [x] JSON-LD structured data (Church + NonprofitOrganization)
+- [x] H1 tags on all pages
+- [x] Twitter card tags on all pages
 - [ ] Check for 404s in Search Console after 2-4 weeks
-- [ ] Add redirects for any stale URLs found
+- [ ] Re-audit SEO when full site launches (add new pages to sitemap, update canonical tags)
 
 ---
 

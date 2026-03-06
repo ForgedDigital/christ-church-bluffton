@@ -1,3 +1,13 @@
+async function verifyTurnstile(token) {
+  const res = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ secret: process.env.TURNSTILE_SECRET_KEY, response: token })
+  });
+  const data = await res.json();
+  return data.success;
+}
+
 async function breezeRequest(endpoint, params) {
   const url = new URL(endpoint, process.env.BREEZE_URL + '/');
   Object.entries(params).forEach(([k, v]) => {
@@ -19,7 +29,17 @@ exports.handler = async (event) => {
   }
 
   try {
-    const { email } = JSON.parse(event.body);
+    const { email, website_url_confirm, turnstileToken } = JSON.parse(event.body);
+
+    // Honeypot — bots fill this hidden field, real users don't
+    if (website_url_confirm) {
+      return { statusCode: 200, body: JSON.stringify({ success: true }) };
+    }
+
+    // Cloudflare Turnstile verification
+    if (!turnstileToken || !(await verifyTurnstile(turnstileToken))) {
+      return { statusCode: 400, body: JSON.stringify({ error: 'CAPTCHA verification failed. Please try again.' }) };
+    }
 
     if (!email) {
       return { statusCode: 400, body: JSON.stringify({ error: 'Email is required.' }) };
