@@ -1,6 +1,8 @@
 [build]
   publish = "src/primary/"
-  functions = "netlify/functions"
+
+[functions]
+  directory = "netlify/functions"
 
 # Clean URLs - removes .html from addresses
 [build.processing.html]
