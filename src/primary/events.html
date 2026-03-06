@@ -24,9 +24,7 @@
     <meta name="twitter:description" content="Upcoming events and gatherings at Christ Church Bluffton.">
     <meta name="twitter:image" content="https://www.christchurchbluffton.org/images/og-image.jpg">
     <link rel="canonical" href="https://www.christchurchbluffton.org/events">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Lato:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/fonts.css">
     <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
     <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
     <link rel="stylesheet" href="css/styles.css">
@@ -297,7 +295,7 @@
                     <h4>Connect</h4>
                     <ul class="footer-links-list">
                         <li><a href="contact.html">Contact Us</a></li>
-                        <li><a href="about.html">Our Pastor</a></li>
+                        <li><a href="about.html#pastor">Our Pastor</a></li>
                         <li><a href="events.html">Events</a></li>
                         <li><a href="groups.html">Groups</a></li>
                     </ul>
@@ -308,7 +306,6 @@
                     <form class="newsletter-form">
                         <input type="email" name="email" placeholder="Your email" required>
                         <input type="text" name="website_url_confirm" style="position:absolute;left:-9999px;" tabindex="-1" autocomplete="new-password">
-                        <div class="cf-turnstile" data-sitekey="0x4AAAAAACneNwgE844_oOI-" data-size="compact"></div>
                         <button type="submit" class="btn-subscribe">Subscribe</button>
                     </form>
                 </div>
@@ -349,7 +346,6 @@
                     <textarea id="prayerText" name="prayer" placeholder="Share your prayer request..." required></textarea>
                 </div>
                 <input type="text" name="website_url_confirm" style="position:absolute;left:-9999px;" tabindex="-1" autocomplete="new-password">
-                <div class="cf-turnstile" data-sitekey="0x4AAAAAACneNwgE844_oOI-" data-size="flexible"></div>
                 <button type="submit" class="btn btn-primary">Submit Prayer</button>
             </form>
         </div>
@@ -360,7 +356,6 @@
         </div>
     </div>
 
-    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
     <script src="js/script.js"></script>
 </body>
 </html>

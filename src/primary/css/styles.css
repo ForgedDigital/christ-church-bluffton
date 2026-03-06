@@ -114,7 +114,8 @@
 
 html {
     scroll-behavior: smooth;
-    overflow-x: clip;
+    overflow-x: hidden;
+    max-width: 100vw;
 }
 
 body {
@@ -124,7 +125,8 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    overflow-x: clip;
+    overflow-x: hidden;
+    max-width: 100vw;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -1826,9 +1828,7 @@ ul {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 80px;
-    max-width: 1200px;
-    margin: 0 auto 60px;
-    padding: 0 24px;
+    margin-bottom: 60px;
 }
 
 .contact-intro {
@@ -1854,6 +1854,10 @@ ul {
     border-radius: 16px;
     box-shadow: 0 2px 8px rgba(27, 67, 50, 0.08);
     transition: var(--transition);
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    word-break: break-word;
 }
 
 .contact-card:hover {
@@ -1911,6 +1915,8 @@ ul {
     padding: 40px;
     border-radius: 24px;
     box-shadow: 0 10px 40px rgba(27, 67, 50, 0.15);
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 .form-card h3 {
@@ -1966,9 +1972,11 @@ ul {
 }
 
 .map-section {
-    max-width: 1200px;
     margin: 60px auto 0;
-    padding: 0 24px;
+}
+
+.map-embed iframe {
+    max-width: 100%;
 }
 
 .map-placeholder {
@@ -2698,6 +2706,11 @@ ul {
 /* ========================================
    Contact Form Elements
    ======================================== */
+.contact-form {
+    max-width: 100%;
+    overflow: hidden;
+}
+
 .contact-form label {
     display: block;
     font-family: var(--font-body);
@@ -2869,6 +2882,14 @@ ul {
 
     .pastor-content {
         text-align: center;
+    }
+
+    .pastor-content .section-title.left-align {
+        text-align: center;
+    }
+
+    .pastor-content .section-divider.left-align {
+        justify-content: center;
     }
 
     .beliefs-grid {
@@ -3076,6 +3097,10 @@ ul {
     }
 
     /* Footer */
+    .footer-container {
+        padding-top: 50px;
+    }
+
     .footer-main {
         grid-template-columns: 1fr;
         gap: 30px;
@@ -3360,6 +3385,232 @@ ul {
         right: 20px;
         left: 20px;
         width: auto;
+    }
+}
+
+/* ========================================
+   Small Screen (320px–380px)
+   ======================================== */
+@media (max-width: 380px) {
+    .container {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .header-container {
+        padding: 10px 12px;
+    }
+
+    .church-name {
+        font-size: 0.85rem;
+    }
+
+    .church-location {
+        display: none;
+    }
+
+    .logo-box {
+        width: 40px;
+        height: 40px;
+    }
+
+    .page-header {
+        padding: 70px 12px 50px;
+    }
+
+    .section-label {
+        font-size: 0.75rem;
+        letter-spacing: 2px;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+    }
+
+    .section {
+        padding: 40px 0;
+    }
+
+    /* Hero */
+    .hero {
+        padding: 40px 12px;
+    }
+
+    .title-line:first-child {
+        font-size: 1.8rem;
+    }
+
+    .title-accent {
+        font-size: 2.2rem;
+    }
+
+    .hero-buttons {
+        max-width: 220px;
+    }
+
+    .btn-lg {
+        padding: 12px 20px;
+        font-size: 0.85rem;
+    }
+
+    /* Forms */
+    .form-card {
+        padding: 16px;
+        border-radius: 16px;
+    }
+
+    .contact-form input[type="text"],
+    .contact-form input[type="email"],
+    .contact-form input[type="tel"],
+    .contact-form select,
+    .contact-form textarea {
+        padding: 12px 14px;
+        font-size: 0.9rem;
+    }
+
+    .contact-card {
+        padding: 12px;
+        gap: 14px;
+    }
+
+    .contact-card-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .contact-card-icon svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    /* Contact page */
+    .contact-grid {
+        gap: 30px;
+        margin-bottom: 30px;
+    }
+
+    .contact-info .section-title {
+        font-size: 1.4rem;
+    }
+
+    .contact-intro {
+        font-size: 0.95rem;
+    }
+
+    .contact-cards {
+        gap: 12px;
+    }
+
+    .form-card h3 {
+        font-size: 1.2rem;
+    }
+
+    /* Give page */
+    .donation-box {
+        max-width: 100%;
+    }
+
+    .give-content .scripture-banner {
+        padding: 20px 16px;
+    }
+
+    .give-content h3 {
+        font-size: 1.2rem;
+    }
+
+    /* Donate banner */
+    .donate-content {
+        padding: 0 8px;
+    }
+
+    .donate-intro {
+        font-size: 0.95rem;
+    }
+
+    /* Events */
+    .event-details {
+        padding: 14px;
+    }
+
+    .event-title {
+        font-size: 1.05rem;
+    }
+
+    /* Footer */
+    .footer-container {
+        padding: 50px 12px 20px;
+    }
+
+    .newsletter-form input[type="email"] {
+        padding: 10px 12px;
+        font-size: 0.9rem;
+    }
+
+    /* Prayer popup */
+    .prayer-fab {
+        bottom: 16px;
+        right: 12px;
+        padding: 10px 14px;
+        font-size: 0.7rem;
+    }
+
+    .prayer-popup {
+        bottom: 60px;
+        right: 12px;
+        left: 12px;
+    }
+
+    .prayer-popup-body {
+        padding: 16px;
+    }
+
+    /* Back to top */
+    .back-to-top {
+        bottom: 16px;
+        left: 12px;
+        width: 36px;
+        height: 36px;
+    }
+
+    /* 404 page */
+    .error-page h1 {
+        font-size: 4rem;
+    }
+
+    .error-page h2 {
+        font-size: 1.4rem;
+    }
+
+    /* Map */
+    .map-embed iframe {
+        height: 280px;
+        border-radius: 16px !important;
+    }
+
+    /* Disable horizontal slide animations — they cause overflow on small screens */
+    [data-animate="fade-right"] {
+        transform: translateY(30px);
+    }
+
+    [data-animate="fade-left"] {
+        transform: translateY(30px);
+    }
+
+    [data-animate="fade-right"].animated,
+    [data-animate="fade-left"].animated {
+        transform: translateY(0);
+    }
+}
+
+/* Turnstile widget — compact on small screens, flexible on larger */
+@media (min-width: 360px) {
+    .cf-turnstile[data-size="compact"] {
+        display: none;
+    }
+}
+@media (max-width: 359px) {
+    .cf-turnstile[data-size="flexible"] {
+        display: none;
     }
 }
 

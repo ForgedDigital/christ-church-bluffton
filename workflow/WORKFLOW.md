@@ -35,7 +35,7 @@
 - [ ] **Real photos**: about page, worship, groups, pastor headshot, leadership team
 - [ ] **Phone number**: replace `(843) 555-5555` placeholder (appears on ALL 10 pages)
 - [ ] **Street address**: privacy.html + terms.html only show "Bluffton, SC" — need full address
-- [ ] **Email verification**: confirm `pastor@`, `info@`, `give@` christchurchbluffton.org are real
+- [ ] **Email verification**: confirm `pastor@`, `info@`, `treasurer@` christchurchbluffton.org are real
 - [ ] **ACNA membership**: verify claim in about.html (line ~101)
 - [ ] **Pastor quote**: about.html (line ~250) — needs Rev. Riddle's actual quote
 - [ ] **Pastor bio**: needs proper writing (currently AI-generated placeholder)
@@ -90,6 +90,7 @@
 - [ ] **Create apple-touch-icon.png**: 180x180px PNG of church logo (needed for iOS bookmarks)
 - [ ] **Self-host Google Fonts**: download woff2 files, add @font-face, remove Google Fonts links (performance)
 - [ ] **Accessibility audit**: run Lighthouse + WAVE, fix any remaining issues
+- [ ] **Color contrast review**: check WCAG AA contrast ratios as colors are updated (especially gold text on white/green backgrounds)
 - [ ] **Cross-browser test**: Chrome, Firefox, Safari, Edge, mobile
 - [ ] **Final code cleanup**: remove any console.logs, unused CSS, etc.
 
@@ -98,7 +99,7 @@
 > Future pages are added to `live/` folder and manually deployed to Netlify.
 
 ### Two Netlify Sites
-1. **Review/Testing** — `christchuchbluffton.netlify.app` (Kevin's Netlify, auto-deploys from GitHub, serves `src/`)
+1. **Review/Testing** — `christchuchbluffton.netlify.app` (Kevin's Netlify, auto-deploys from GitHub, serves `src/primary/`)
 2. **Production** — `christchurchbluffton.org` (separate Netlify account, manual drag-and-drop of `live/` folder)
 
 ### Production Deployment Workflow
@@ -130,7 +131,7 @@
 - [x] Meta descriptions on all pages
 - [x] 301 redirects: `/donation` → `/`, `/coming-soon` → `/`
 - [x] Treasurer email for alternate giving (treasurer@christchurchbluffton.org)
-- [ ] Re-add Netlify environment variables on production site: `RESEND_API_KEY`, `EMAIL_FROM`, `NOTIFY_EMAIL`
+- [ ] Re-add Netlify environment variables on production site: `RESEND_API_KEY`, `EMAIL_FROM`, `NOTIFY_EMAIL`, `TURNSTILE_SECRET_KEY`
 - [ ] Update `NOTIFY_EMAIL` to final recipient(s) once Google Workspace emails are configured
 - [ ] Verify all 3 forms work on production URL
 
@@ -169,9 +170,9 @@
 | Item | Value |
 |---|---|
 | Project folder | `Christ Church Bluffton` |
-| Source code (dev) | `src/` subfolder |
+| Source code (dev) | `src/primary/` subfolder |
 | Production site | `live/` subfolder (drag-and-drop to Netlify) |
-| Dev server | `http-server src/ -p 3011` |
+| Dev server | `http-server src/primary/ -p 3011` |
 | GitHub | `ForgedDigital/christ-church-bluffton` |
 | Production URL | `christchurchbluffton.org` |
 | GA4 ID | `G-PTWWV0M0DX` |

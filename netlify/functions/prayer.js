@@ -1,13 +1,3 @@
-async function verifyTurnstile(token) {
-  const res = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ secret: process.env.TURNSTILE_SECRET_KEY, response: token })
-  });
-  const data = await res.json();
-  return data.success;
-}
-
 async function breezeRequest(endpoint, params) {
   const url = new URL(endpoint, process.env.BREEZE_URL + '/');
   Object.entries(params).forEach(([k, v]) => {
@@ -29,15 +19,10 @@ exports.handler = async (event) => {
   }
 
   try {
-    const { name, prayer, website_url_confirm, turnstileToken } = JSON.parse(event.body);
+    const { name, prayer, website_url_confirm } = JSON.parse(event.body);
 
     // Honeypot — bots fill this hidden field, real users don't
     if (website_url_confirm) {
-      return { statusCode: 200, body: JSON.stringify({ success: true }) };
-    }
-
-    // Cloudflare Turnstile verification
-    if (!turnstileToken || !(await verifyTurnstile(turnstileToken))) {
       return { statusCode: 200, body: JSON.stringify({ success: true }) };
     }
 
