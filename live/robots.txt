@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /coming-soon
 
 Sitemap: https://christchurchbluffton.org/sitemap.xml

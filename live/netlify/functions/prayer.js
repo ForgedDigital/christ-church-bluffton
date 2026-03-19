@@ -19,29 +19,27 @@ exports.handler = async (event) => {
   }
 
   try {
-    const { email, website_url_confirm } = JSON.parse(event.body);
+    const { name, prayer, website_url_confirm } = JSON.parse(event.body);
 
     // Honeypot — bots fill this hidden field, real users don't
     if (website_url_confirm) {
       return { statusCode: 200, body: JSON.stringify({ success: true }) };
     }
 
-    if (!email) {
-      return { statusCode: 400, body: JSON.stringify({ error: 'Email is required.' }) };
+    if (!prayer) {
+      return { statusCode: 400, body: JSON.stringify({ error: 'Prayer text is required.' }) };
     }
 
-    const prefix = email.split('@')[0];
-    const first = prefix.charAt(0).toUpperCase() + prefix.slice(1);
-    const last = '(Stay Updated)';
+    const displayName = (name && name.trim()) ? name.trim() : 'Anonymous';
+    const spaceIdx = displayName.indexOf(' ');
+    const first = spaceIdx > 0 ? displayName.substring(0, spaceIdx) : displayName;
+    const last = spaceIdx > 0 ? displayName.substring(spaceIdx + 1) : '(Prayer Request)';
 
     // Add person to Breeze
-    const fields = [
-      { field_id: process.env.BREEZE_EMAIL_FIELD_ID, field_type: 'email', response: true, details: { address: email } }
-    ];
-    const person = await breezeRequest('people/add', { first, last, fields_json: JSON.stringify(fields) });
+    const person = await breezeRequest('people/add', { first, last });
 
-    // Assign "Stay Updated" tag
-    await breezeRequest('tags/assign', { person_id: person.id, tag_id: process.env.BREEZE_TAG_STAYUPDATED });
+    // Assign "Prayer Request" tag
+    await breezeRequest('tags/assign', { person_id: person.id, tag_id: process.env.BREEZE_TAG_PRAYER });
 
     // Send email notification via Resend
     if (process.env.RESEND_API_KEY) {
@@ -49,17 +47,19 @@ exports.handler = async (event) => {
         method: 'POST',
         headers: { 'Authorization': `Bearer ${process.env.RESEND_API_KEY}`, 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          from: process.env.EMAIL_FROM || 'Christ Church Bluffton <notifications@resend.dev>',
+          from: process.env.EMAIL_FROM || 'Christ Church Bluffton <notifications@christchurchbluffton.org>',
           to: ['jonathan@christchurchbluffton.org', 'admin@christchurchbluffton.org'],
-          subject: `New Stay Updated Signup — ${email}`,
-          text: `New stay updated signup:\n\nEmail: ${email}`
+          subject: `New Prayer Request — ${name || 'Anonymous'}`,
+          text: `New prayer request:\n\nName: ${name || 'Anonymous'}\nPrayer: ${prayer}`
         })
       });
     }
 
+    // Always return success (pastoral UX)
     return { statusCode: 200, body: JSON.stringify({ success: true }) };
   } catch (err) {
-    console.error('[Stay Updated] Error:', err.message);
-    return { statusCode: 500, body: JSON.stringify({ error: 'Something went wrong. Please try again.' }) };
+    console.error('[Prayer] Error:', err.message);
+    // Still return success — pastoral UX
+    return { statusCode: 200, body: JSON.stringify({ success: true }) };
   }
 };

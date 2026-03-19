@@ -1,9 +1,11 @@
 # Christ Church Bluffton — Master Workflow
 
-## Phase 1: Site Build ✅ COMPLETE
+## Phase 1: Original Site Build (src/primary/) ✅ COMPLETE
+> This was the original full site build in `src/primary/`. It now serves as a **design reference** for the live site.
+
 - [x] Initial site build (10 pages: index, about, worship, groups, events, contact, give, privacy, terms, 404)
-- [x] Color scheme: forest green #1B4332 + muted gold #A0875A
-- [x] Fonts: Cinzel (headings), Lato (body), Cormorant Garamond (accent)
+- [x] Color scheme: forest green #1B4332 + muted gold #A0875A (original — since updated)
+- [x] Fonts: Cinzel (headings), Lato (body), Cormorant Garamond (accent) (original — since updated)
 - [x] Sticky header with shadow on scroll
 - [x] Celtic cross SVG favicon
 - [x] Active nav highlighting (works with .html and clean URLs)
@@ -29,27 +31,23 @@
 - [x] Pushed to GitHub: ForgedDigital/christ-church-bluffton (7 commits)
 
 ## Phase 2: Client Review & Content ⏳ WAITING ON CLIENT
-> Status: Rough draft complete. Waiting on Rev. Jonathan Riddle for review + real content.
+> Status: Live site has Give + Contact pages. Waiting on Rev. Jonathan Riddle for content as we build out additional pages in `live/`.
 
-### Content Needed from Client
+### Content Needed from Client (for future pages)
 - [ ] **Real photos**: about page, worship, groups, pastor headshot, leadership team
-- [ ] **Phone number**: replace `(843) 555-5555` placeholder (appears on ALL 10 pages)
-- [ ] **Street address**: privacy.html + terms.html only show "Bluffton, SC" — need full address
+- [ ] **Phone number**: needed when adding to site
 - [ ] **Email verification**: confirm `pastor@`, `info@`, `treasurer@` christchurchbluffton.org are real
-- [ ] **ACNA membership**: verify claim in about.html (line ~101)
-- [ ] **Pastor quote**: about.html (line ~250) — needs Rev. Riddle's actual quote
-- [ ] **Pastor bio**: needs proper writing (currently AI-generated placeholder)
-- [ ] **Full content review**: much of the site text is AI-generated / researched — client needs to approve or rewrite
-- [ ] **Domain**: confirm what domain they want (christchurchbluffton.org? .com?)
+- [ ] **ACNA membership**: verify before adding to about page
+- [ ] **Pastor quote + bio**: needs Rev. Riddle's actual words
+- [ ] **Full content review**: much of `src/primary/` text is AI-generated — client needs to approve before porting to `live/`
 
-### After Client Provides Content
-- [ ] Replace all `(843) 555-5555` across all 10 pages
-- [ ] Replace placeholder emails if different from current
-- [ ] Add full street address to privacy.html, terms.html, contact.html
+### As Pages Get Built in live/
+- [ ] Pull layout/design from `src/primary/`
+- [ ] Apply current branding (navy #303b6a, gold #c3a355, Lora font)
+- [ ] Use shared components (header, footer, prayer FAB via includes)
+- [ ] Add page-specific CSS inline
+- [ ] Update sitemap.xml with new pages
 - [ ] Swap in real photos (convert to webp)
-- [ ] Update pastor bio + quote
-- [ ] Remove all `[VERIFY]` and `[PLACEHOLDER]` HTML comments
-- [ ] Remove `review-marker` spans and CSS (see README.md for details)
 
 ## Phase 3: Pre-Launch Dev Work 🔧 TODO
 > Can be done before or after client content — no dependency.
@@ -87,53 +85,136 @@
 - [x] **Apple Touch Icon link tag**: added to all 10 pages (PNG file still needed)
 - [x] **Hero fetchpriority**: added `fetchpriority="high"` to index.html hero image
 - [x] **Removed "example" placeholder**: removed `<span class="logo-example">` from header on all 10 pages
-- [ ] **Create apple-touch-icon.png**: 180x180px PNG of church logo (needed for iOS bookmarks)
+- [x] **Apple Touch Icon**: `favicon.png` (180x180) created from logo-dark-bg.png, linked on all pages
 - [ ] **Self-host Google Fonts**: download woff2 files, add @font-face, remove Google Fonts links (performance)
 - [ ] **Accessibility audit**: run Lighthouse + WAVE, fix any remaining issues
 - [ ] **Color contrast review**: check WCAG AA contrast ratios as colors are updated (especially gold text on white/green backgrounds)
 - [ ] **Cross-browser test**: Chrome, Firefox, Safari, Edge, mobile
 - [ ] **Final code cleanup**: remove any console.logs, unused CSS, etc.
 
-## Phase 4: Deployment 🚀 IN PROGRESS
-> Production site is LIVE at christchurchbluffton.org (donation page only).
-> Future pages are added to `live/` folder and manually deployed to Netlify.
+## Phase 3b: Live Site Rebuild (2026-03-17) ✅ COMPLETE
+> Client requested keeping the current live site and making changes directly. Rebuilt `live/` as the main development folder with updated branding.
 
-### Two Netlify Sites
-1. **Review/Testing** — `christchuchbluffton.netlify.app` (Kevin's Netlify, auto-deploys from GitHub, serves `src/primary/`)
-2. **Production** — `christchurchbluffton.org` (separate Netlify account, manual drag-and-drop of `live/` folder)
+### Branding Updates
+- [x] **New color scheme**: Navy #303b6a + Gold #c3a355 (client-chosen)
+- [x] **Supporting colors**: Linen background #F5F4EF, cream cards #FAF8F3, blue-gray text #4A4A55, warm gray borders #E2E0D8
+- [x] **New font**: Lora (Regular 400) — replaced Cinzel/Lato/Cormorant Garamond
+- [x] **New logos**: Celtic cross emblem in 5 variants stored in `assets/logos/` (logo-light.png, logo-dark.png, logo-gold.png, logo-white-bg.png, logo-dark-bg.png)
+- [x] **New favicon**: Created from logo-dark-bg.png (favicon.ico + favicon.png)
 
-### Production Deployment Workflow
-> **All future page additions build off the `live/` folder.**
-> When a new page is ready to go public:
-> 1. Build/finalize the page in `src/primary/`
-> 2. Copy production-ready version to `live/`
-> 3. Adjust paths (images → `images/`, remove dev-only links)
-> 4. Ensure GA4 tracking, OG tags, and CSP are included
-> 5. Drag-and-drop `live/` folder to production Netlify
->
-> The `live/` folder is the single source of truth for what's on christchurchbluffton.org.
+### Live Pages (Updated 2026-03-17)
+- [x] **index.html** (Give page) — Scripture banner, two-column give section (pastor quote + Tithe.ly donation box), CTA banner, loader with logo
+- [x] **contact.html** — Page header, contact cards (location, email, P.O. Box), contact form with Turnstile, donate CTA
+- [x] **privacy.html** — Legal page with shared header/footer
+- [x] **terms.html** — Legal page with shared header/footer
+- [x] **404.html** — Branded error page
 
-### Live Site Status
-- [x] Domain `christchurchbluffton.org` → Netlify (GoDaddy DNS, SSL active)
-- [x] Donation page live as landing page (`/`)
-- [x] Privacy policy (`/privacy`)
-- [x] Terms of use (`/terms`)
-- [x] Custom 404 page
-- [x] Tithe.ly modal working (CSP configured)
-- [x] Security headers (HSTS, X-Frame, CSP, etc.)
-- [x] Clean URLs enabled (no .html)
-- [x] robots.txt (blocks /coming-soon, references sitemap)
-- [x] sitemap.xml (indexable pages only)
-- [x] JSON-LD structured data (Church + NonprofitOrganization)
-- [x] Canonical tags on all pages
+### Shared Component Architecture
+- [x] **`includes/header.html`** — Single header for all pages (logo, Contact nav link, Give button)
+- [x] **`includes/footer.html`** — Single footer for all pages (branding, quick links, newsletter signup, copyright, legal links, Powered by Forged Digital)
+- [x] **`includes/prayer-fab.html`** — Prayer Request floating button + popup form
+- [x] **`css/shared.css`** — All shared styles (header, footer, newsletter, prayer FAB, skip link, focus styles, reduced motion)
+- [x] **`js/components.js`** — Loads header/footer/prayer HTML, handles newsletter + prayer form submissions
+
+### Accessibility (completed 2026-03-17)
+- [x] Skip-to-content link in shared header
+- [x] `<nav>` landmark with `aria-label` on header navigation
+- [x] `id="main-content"` on all pages for skip link target
+- [x] Focus-visible outlines (gold, 2px, 3px offset)
+- [x] `prefers-reduced-motion` media query — disables all animations
+- [x] Heading hierarchy fixed (H1 → H2 → H3, no skipping)
+- [x] `aria-label` on prayer FAB and close buttons
+- [x] Honeypot spam protection on all forms
+- [x] Cloudflare Turnstile on contact form
+
+### SEO & Meta (completed 2026-03-17)
+- [x] `og:site_name` on all pages
 - [x] OG + Twitter card tags on all pages
-- [x] H1 tag on all pages (sr-only on donation/index)
-- [x] Meta descriptions on all pages
-- [x] 301 redirects: `/donation` → `/`, `/coming-soon` → `/`
-- [x] Treasurer email for alternate giving (treasurer@christchurchbluffton.org)
-- [ ] Re-add Netlify environment variables on production site: `RESEND_API_KEY`, `EMAIL_FROM`, `NOTIFY_EMAIL`, `TURNSTILE_SECRET_KEY`
-- [ ] Update `NOTIFY_EMAIL` to final recipient(s) once Google Workspace emails are configured
+- [x] Canonical URLs on all pages
+- [x] `sitemap.xml` updated with `/` and `/contact`
+- [x] `robots.txt` cleaned (removed dead /coming-soon disallow)
+- [x] Privacy/Terms changed from `noindex` to `index, follow`
+
+### Netlify Config (completed 2026-03-17)
+- [x] API routes: `/api/contact`, `/api/prayer`, `/api/stay-updated` → Netlify Functions
+- [x] Netlify Functions copied to `live/netlify/functions/`
+- [x] CSP with Tithe.ly, GA4, Turnstile, Forged Digital iframe allowed
+- [x] `Permissions-Policy: payment=(self "https://give.tithe.ly")`
+- [x] `frame-ancestors` for Forged Digital portfolio embedding
+- [x] Cache headers for CSS, JS, images (1 year immutable)
+- [x] Custom 404 redirect rule
+- [x] Legacy redirects: `/donation` → `/`, `/coming-soon` → `/`
+
+### Cleanup (completed 2026-03-17)
+- [x] Removed orphan files: `donation.html`, `coming-soon.html`, `netlify-previous.toml`
+- [x] Error messages added to prayer and newsletter form failures
+- [x] CTA "Get in Touch" links to contact.html (not mailto)
+- [x] Font sizes audited and increased for Lora readability
+
+## Phase 4: Deployment 🚀 IN PROGRESS
+> Production site is LIVE at christchurchbluffton.org.
+> `live/` is the main development folder — pushed to GitHub, auto-deploys to Netlify.
+
+### Folder Structure
+- **`live/`** — **Main development folder.** This is the active codebase. Pushed to GitHub. Auto-deploys to Netlify. All new work happens here.
+- **`src/primary/`** — Reference/design source. Contains the original full site build with layouts, components, and designs that we pull from when building new pages in `live/`.
+- **`assets/logos/`** — All logo variants (source PNGs, not deployed)
+
+### Development Workflow
+> **`live/` is the single source of truth for what's on christchurchbluffton.org.**
+> - All development happens in `live/`
+> - Use `src/primary/` as a design reference — pull layouts, components, and ideas from there into `live/`
+> - `live/` is pushed to GitHub and auto-deploys to Netlify
+> - Shared components: `includes/header.html`, `includes/footer.html`, `includes/prayer-fab.html`, `css/shared.css`, `js/components.js`
+> - Page-specific CSS stays inline on each page; shared styles are in `css/shared.css`
+
+### Netlify
+- **URL**: `christchurchbluffton.org`
+- **Auto-deploys**: From `ForgedDigital/christ-church-bluffton` main branch, publishes `live/` folder
+- **Netlify config**: `live/netlify.toml`
+
+### Live Site Status (Updated 2026-03-17)
+- [x] Domain `christchurchbluffton.org` → Netlify (GoDaddy DNS, SSL active)
+- [x] Give page live as landing page (`/`) — Tithe.ly modal, scripture banner, CTA
+- [x] Contact page (`/contact`) — form with Turnstile, contact cards, donate CTA
+- [x] Privacy policy (`/privacy`) — shared header/footer
+- [x] Terms of use (`/terms`) — shared header/footer
+- [x] Custom 404 page
+- [x] Tithe.ly modal working (CSP + Permissions-Policy configured)
+- [x] Security headers (HSTS, CSP with frame-ancestors, nosniff, referrer-policy)
+- [x] Clean URLs enabled (no .html)
+- [x] Netlify Functions for contact, prayer, newsletter forms
+- [x] Prayer Request FAB on all pages
+- [x] Newsletter signup in footer on all pages
+- [x] Shared components (header, footer, prayer FAB via JS includes)
+- [x] robots.txt + sitemap.xml (includes `/` and `/contact`)
+- [x] JSON-LD structured data (Church + NonprofitOrganization)
+- [x] Full accessibility pass (skip link, focus styles, reduced motion, heading hierarchy, ARIA)
+- [x] Netlify environment variables set on production site (Breeze, Resend, Turnstile)
 - [ ] Verify all 3 forms work on production URL
+- [ ] Self-host Lora font (currently loaded from Google Fonts CDN)
+- [ ] Color contrast audit (WCAG AA — especially gold on white/navy backgrounds)
+- [ ] Cross-browser test (Chrome, Firefox, Safari, Edge, mobile)
+
+## Phase 4b: Client Approval & Pre-Launch ⏳ NEXT
+> Push current build to git, send to client for approval, then do a full pre-launch walkthrough before going live.
+
+### Next Steps
+1. [ ] Push `live/` to GitHub
+2. [ ] Send client preview link for approval (Netlify auto-deploy)
+3. [ ] Client review — collect feedback/changes
+4. [ ] Apply any requested changes
+5. [ ] Full pre-launch walkthrough (refer to `_Operations/PRELAUNCH-WEBSITE.md`)
+   - [ ] Test all 3 forms on production URL (contact, prayer, newsletter)
+   - [ ] Verify Tithe.ly donation modal works
+   - [ ] Cross-browser test (Chrome, Firefox, Safari, Edge, mobile)
+   - [ ] Responsive check (320px, 480px, 768px, 1024px, 1440px)
+   - [ ] Color contrast audit (WCAG AA)
+   - [ ] Self-host Lora font
+   - [ ] Lighthouse audit (performance, accessibility, SEO)
+   - [ ] Verify GA4 is receiving data
+   - [ ] Submit updated sitemap to Google Search Console
+6. [ ] Go live
 
 ## Phase 5: SEO & Analytics 📊 DONE (for donation page)
 
@@ -151,18 +232,19 @@
 - [ ] Submit sitemap URL in Search Console
 - [ ] Confirm pages are being indexed (check back in 1-2 weeks)
 
-### SEO Audit ✅ DONE (donation page)
-- [x] sitemap.xml — only indexable pages listed
-- [x] robots.txt — references sitemap, blocks /coming-soon
+### SEO Audit ✅ DONE (updated 2026-03-17)
+- [x] sitemap.xml — includes `/` and `/contact`
+- [x] robots.txt — references sitemap, clean (no dead rules)
 - [x] Canonical tags on all live pages
-- [x] Meta robots: `index, follow` on donation, `noindex` on legal/404/coming-soon
+- [x] Meta robots: `index, follow` on give, contact, privacy, terms; `noindex` on 404
 - [x] og:image + twitter:image on all pages
+- [x] og:site_name on all pages
 - [x] Meta descriptions unique per page
 - [x] JSON-LD structured data (Church + NonprofitOrganization)
-- [x] H1 tags on all pages
+- [x] H1 tags on all pages (proper hierarchy)
 - [x] Twitter card tags on all pages
 - [ ] Check for 404s in Search Console after 2-4 weeks
-- [ ] Re-audit SEO when full site launches (add new pages to sitemap, update canonical tags)
+- [ ] Re-audit SEO when new pages are added (update sitemap, canonical tags)
 
 ---
 
@@ -170,13 +252,16 @@
 | Item | Value |
 |---|---|
 | Project folder | `Christ Church Bluffton` |
-| Source code (dev) | `src/primary/` subfolder |
-| Production site | `live/` subfolder (drag-and-drop to Netlify) |
-| Dev server | `http-server src/primary/ -p 3011` |
+| Active codebase | `live/` subfolder (pushed to git, auto-deploys to Netlify) |
+| Design reference | `src/primary/` subfolder (pull layouts/ideas from here) |
+| Dev server | `http-server live/ -p 3013` |
 | GitHub | `ForgedDigital/christ-church-bluffton` |
 | Production URL | `christchurchbluffton.org` |
 | GA4 ID | `G-PTWWV0M0DX` |
-| Netlify config (dev) | `netlify.toml` (root) |
-| Netlify config (prod) | `live/netlify.toml` |
+| Netlify config | `live/netlify.toml` |
+| Shared CSS | `live/css/shared.css` |
+| Shared JS | `live/js/components.js` |
+| Shared HTML | `live/includes/` (header, footer, prayer-fab) |
+| Logo assets | `assets/logos/` (5 variants) |
 | Client | Rev. Jonathan Riddle |
 | Billing | Donation (free) |

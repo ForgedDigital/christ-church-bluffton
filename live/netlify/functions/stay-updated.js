@@ -49,7 +49,7 @@ exports.handler = async (event) => {
         method: 'POST',
         headers: { 'Authorization': `Bearer ${process.env.RESEND_API_KEY}`, 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          from: process.env.EMAIL_FROM || 'Christ Church Bluffton <notifications@resend.dev>',
+          from: process.env.EMAIL_FROM || 'Christ Church Bluffton <notifications@christchurchbluffton.org>',
           to: ['jonathan@christchurchbluffton.org', 'admin@christchurchbluffton.org'],
           subject: `New Stay Updated Signup — ${email}`,
           text: `New stay updated signup:\n\nEmail: ${email}`
