@@ -1,5 +1,0 @@
-# Christ Church Bluffton
-User-agent: *
-Allow: /
-
-Sitemap: https://www.christchurchbluffton.org/sitemap.xml
