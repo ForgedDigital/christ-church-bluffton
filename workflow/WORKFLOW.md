@@ -150,6 +150,17 @@
 - [x] Error messages added to prayer and newsletter form failures
 - [x] CTA "Get in Touch" links to contact.html (not mailto)
 - [x] Font sizes audited and increased for Lora readability
+- [x] Web app manifest (manifest.json) with 192x192 + 512x512 app icons
+- [x] `<meta name="theme-color">` on all pages (navy #303b6a)
+- [x] Font cache header added to netlify.toml
+- [x] Email fallback aligned across all Netlify Functions
+- [x] 404.html CSS path fixed to absolute
+- [x] Hamburger menu for mobile/tablet
+- [x] Prayer FAB: circle on mobile/tablet, pill on desktop, stops above footer on scroll
+- [x] Breakpoint testing complete (320, 350, 380, 400, 420, 480, 768, 1024, 1440)
+- [x] Color contrast audit done (gold-text #8E7A3A for light backgrounds)
+- [x] New final logos swapped in (CCB Logo-Circle + CCB Logo-Circle-Reversed)
+- [x] New favicon regenerated from final logo
 
 ## Phase 4: Deployment 🚀 IN PROGRESS
 > Production site is LIVE at christchurchbluffton.org.
@@ -191,17 +202,20 @@
 - [x] JSON-LD structured data (Church + NonprofitOrganization)
 - [x] Full accessibility pass (skip link, focus styles, reduced motion, heading hierarchy, ARIA)
 - [x] Netlify environment variables set on production site (Breeze, Resend, Turnstile)
+- [x] Self-hosted Lora font (woff2, no Google Fonts CDN)
+- [x] Color contrast audit done (gold-text #8E7A3A)
+- [x] Breakpoint testing complete (320-1440px)
+- [x] Web app manifest + app icons
 - [ ] Verify all 3 forms work on production URL
-- [ ] Self-host Lora font (currently loaded from Google Fonts CDN)
-- [ ] Color contrast audit (WCAG AA — especially gold on white/navy backgrounds)
-- [ ] Cross-browser test (Chrome, Firefox, Safari, Edge, mobile)
+- [ ] Cross-browser test (Safari, Firefox, Edge)
+- [ ] Lighthouse audit
 
 ## Phase 4b: Client Approval & Pre-Launch ⏳ NEXT
 > Push current build to git, send to client for approval, then do a full pre-launch walkthrough before going live.
 
 ### Next Steps
-1. [ ] Push `live/` to GitHub
-2. [ ] Send client preview link for approval (Netlify auto-deploy)
+1. [x] Push `live/` to GitHub
+2. [ ] Deploy to production domain (drag-and-drop `live/` to christchurchbluffton.org Netlify)
 3. [ ] Client review — collect feedback/changes
 4. [ ] Apply any requested changes
 5. [ ] Full pre-launch walkthrough (refer to `_Operations/PRELAUNCH-WEBSITE.md`)
